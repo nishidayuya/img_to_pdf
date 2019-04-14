@@ -1,36 +1,54 @@
-# ImageToPdf
+# image_to_pdf
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/image_to_pdf`. To experiment with that code, run `bin/console` for an interactive prompt.
+A tool to create PDF from raster image.
 
-TODO: Delete this and the text above, and describe your gem
+[![License X11](https://img.shields.io/badge/license-X11-brightgreen.svg)](https://raw.githubusercontent.com/nishidayuya/image_to_pdf/master/LICENSE.txt)
+
+## Requirements
+
+* Ruby
+* ImageMagick
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'image_to_pdf'
+```sh
+$ gem install image_to_pdf
 ```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install image_to_pdf
 
 ## Usage
 
-TODO: Write usage instructions here
+Create PDF from PNG:
 
-## Development
+```sh
+$ image_to_pdf input.png output.pdf
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Same as:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```sh
+$ image_to_pdf \
+    --paper-size=a4-landscape \
+    --horizontal-pages=1 \
+    --vertical-pages=1 \
+    input.png output.pdf
+```
+
+Create 3x4 pages B5 portrait PDF from JPG:
+
+```
+$ image_to_pdf \
+    --paper-size=b5-portrait \
+    --horizontal-pages=3 \
+    --vertical-pages=4 \
+    input.jpg output.pdf
+```
+
+Show help message:
+
+```
+$ image_to_pdf --help
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/image_to_pdf.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/nishidayuya/image_to_pdf .
