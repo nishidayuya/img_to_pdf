@@ -1,3 +1,9 @@
 #!/usr/bin/env ruby
 
+require "pdf/core/page_geometry"
+require "prawn"
+require "mini_magick"
+
 require "image_to_pdf"
+
+ImageToPdf::Cli.run(ARGV)
