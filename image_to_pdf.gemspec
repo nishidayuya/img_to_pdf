@@ -29,4 +29,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "prawn"
   spec.add_runtime_dependency "mini_magick"
+
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "test-unit"
 end
