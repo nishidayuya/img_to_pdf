@@ -90,11 +90,11 @@ EOS
     end
     parser.on("--vertical-pages=INTEGER",
               "specify number of vertical pages. default 1.") do |v|
-      @n_vertical_pages = Integer(v)
+      @n_vertical_pages = ImageToPdf::IntegerParser.(v)
     end
     parser.on("--horizontal-pages=INTEGER",
               "specify number of horizontal pages. default 1.") do |v|
-      @n_horizontal_pages = Integer(v)
+      @n_horizontal_pages = ImageToPdf::IntegerParser.(v)
     end
 
     input_path, output_path = *parser.parse(argv)
