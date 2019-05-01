@@ -59,6 +59,10 @@ module ImageToPdf::Cli
       end
     end
     pdf.render_file(output_path)
+  rescue ImageToPdf::Error => e
+    raise if @debug
+    STDERR.puts("#{e.class.name}: #{e.message}")
+    exit(1)
   ensure
     tmp_path&.rmtree
   end
@@ -72,6 +76,7 @@ EOS
   # @param [Array<String>] argv program arguments.
   # @return [Array<(String, String)>] `[input image path, output pdf path]`.
   def parse_options(argv)
+    @debug = false
     @paper_size = "a4-landscape"
     @n_vertical_pages = 1
     @n_horizontal_pages = 1
@@ -95,6 +100,9 @@ EOS
     parser.on("--horizontal-pages=INTEGER",
               "specify number of horizontal pages. default 1.") do |v|
       @n_horizontal_pages = ImageToPdf::IntegerParser.(v)
+    end
+    parser.on("--debug") do
+      @debug = true
     end
 
     input_path, output_path = *parser.parse(argv)
