@@ -9,6 +9,11 @@ class ImageToPdf::Dimension < Struct.new(:width, :height, keyword_init: true)
     end
   end
 
+  # @return [Array<(Float, Float)>] array. `[width, height]`.
+  def to_a
+    return [width, height]
+  end
+
   # @return [:landscape, :portrait] direction of dimension.
   def direction
     return width > height ? :landscape : :portrait

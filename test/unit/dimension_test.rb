@@ -8,6 +8,12 @@ class ImageToPdf::DimensionTest < TestCase
     end
   end
 
+  sub_test_case("#to_a") do
+    test("return array") do
+      assert_equal([1, 2], ImageToPdf::Dimension.new(width: 1, height: 2).to_a)
+    end
+  end
+
   sub_test_case("#direction") do
     data(
       "return :landscape if width is longer than height" => {
