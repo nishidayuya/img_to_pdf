@@ -32,7 +32,7 @@ module ImageToPdf::Cli
     )
 
     pdf = Prawn::Document.new(
-      page_size: [page_dimension_pt.width, page_dimension_pt.height],
+      page_size: page_dimension_pt.to_a,
       left_margin: @left_margin_pt,
       right_margin: @right_margin_pt,
       top_margin: @top_margin_pt,
