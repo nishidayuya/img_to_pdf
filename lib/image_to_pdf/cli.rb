@@ -9,7 +9,7 @@ module ImageToPdf::Cli
 
   def run(argv)
     input_path, output_path = *parse_options(argv).map { |path| Pathname(path) }
-    page_dimension_pt = parse_paper_size(@paper_size)
+    page_dimension_pt = ImageToPdf::PaperSizeParser.(@paper_size)
 
     canvas_dimension_pt = ImageToPdf::Dimension.new(
       width: ((page_dimension_pt.width - @left_margin_pt - @right_margin_pt) *
@@ -111,25 +111,6 @@ EOS
       exit(1)
     end
     return input_path, output_path
-  end
-
-  # @param [String] paper_size_text "a4-landscape", "b3-portrait", etc.
-  # @return [ImageToPdf::Dimension] paper dimension. points.
-  def parse_paper_size(paper_size_text)
-    paper_size, direction = *paper_size_text.split("-")
-    direction = direction.downcase.to_sym
-    if !%i[landscape portrait].include?(direction)
-      raise({direction: direction}.inspect)
-    end
-    raw_size_pt = PDF::Core::PageGeometry::SIZES[paper_size.upcase]
-    if !raw_size_pt
-      raise({paper_size_text: paper_size_text}.inspect)
-    end
-
-    paper_dimension_pt = ImageToPdf::Dimension.from_array(raw_size_pt)
-    paper_dimension_pt = paper_dimension_pt.justify_direction(direction)
-
-    return paper_dimension_pt
   end
 
   # @param [Pathname] path path to image file.
