@@ -1,0 +1,68 @@
+require "optparse"
+
+require "image_to_pdf"
+
+class ImageToPdf::CliOption < Struct.new(:input_path, :output_path, :debug,
+                                         :paper_size_text, :margin_pt,
+                                         :n_horizontal_pages, :n_vertical_pages,
+                                         keyword_init: true)
+  BANNER = <<EOS.chomp
+Usage: #{File.basename(Process.argv0)} [options] input_image_path output_pdf_path
+EOS
+
+  class << self
+    def default
+      default_margin_pt = ImageToPdf::Unit.convert_mm_to_pt(10)
+      return new(
+               input_path: nil,
+               output_path: nil,
+               debug: false,
+               paper_size_text: "a4-landscape",
+               margin_pt: ImageToPdf::Margin.new(
+                 left: default_margin_pt,
+                 right: default_margin_pt,
+                 top: default_margin_pt,
+                 bottom: default_margin_pt,
+               ),
+               n_horizontal_pages: 1,
+               n_vertical_pages: 1,
+             )
+    end
+
+    def from_argv(argv, stdout: STDOUT)
+      result = default
+
+      parser = OptionParser.new
+      parser.version = ImageToPdf::VERSION
+      parser.banner = BANNER
+      parser.summary_indent = ""
+      parser.separator("")
+      parser.separator("Options:")
+      parser.on("--paper-size=SIZE",
+                "specify paper size. 'a4-landscape'(default), 'b3-portrait', etc.") do |v|
+        result.paper_size_text = v
+      end
+      parser.on("--horizontal-pages=INTEGER",
+                "specify number of horizontal pages. default 1.") do |v|
+        result.n_horizontal_pages = ImageToPdf::IntegerParser.(v)
+      end
+      parser.on("--vertical-pages=INTEGER",
+                "specify number of vertical pages. default 1.") do |v|
+        result.n_vertical_pages = ImageToPdf::IntegerParser.(v)
+      end
+      parser.on("--debug") do
+        result.debug = true
+      end
+
+      input_path, output_path = *parser.parse(argv)
+      if !output_path
+        stdout.puts(parser.help)
+        exit(1)
+      end
+      result.input_path = Pathname(input_path).expand_path
+      result.output_path = Pathname(output_path).expand_path
+
+      return result
+    end
+  end
+end
