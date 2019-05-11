@@ -1,6 +1,6 @@
 require "test_helper"
 
-require "pdf/core/page_geometry"
+require "image_to_pdf/paper_size_parser"
 
 class ImageToPdf::PaperSizeParserTest < TestCase
   data {

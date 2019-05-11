@@ -1,3 +1,5 @@
+require "pdf/core/page_geometry"
+
 require "image_to_pdf"
 
 module ImageToPdf::PaperSizeParser

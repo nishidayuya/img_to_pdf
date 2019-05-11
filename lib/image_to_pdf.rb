@@ -1,3 +1,5 @@
+require "pathname"
+
 module ImageToPdf
   autoload(:VERSION, "image_to_pdf/version")
 

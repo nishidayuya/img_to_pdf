@@ -1,5 +1,7 @@
-require "pathname"
 require "tmpdir"
+
+require "mini_magick"
+require "prawn"
 
 require "image_to_pdf"
 
