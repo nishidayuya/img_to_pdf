@@ -16,12 +16,12 @@ class CommandTest < TestCase
 
   test("with arguments") do
     run_command(
-      TEST_ASSETS_PATH / "i.png",
       *%w[
         --paper-size=b5-portrait
         --horizontal-pages=3
         --vertical-pages=4
       ],
+      TEST_ASSETS_PATH / "i.png",
       @output_path,
     )
     assert_file_content(TEST_ASSETS_PATH / "i-b5-portrait-3x4.pdf", @output_path)
