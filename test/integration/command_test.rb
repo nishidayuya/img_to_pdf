@@ -4,9 +4,7 @@ class CommandTest < TestCase
   COMMAND =
     %W[ruby -I#{TOP_SRC_PATH / "lib"} #{TOP_SRC_PATH / "exe/image_to_pdf"}]
 
-  setup do
-    @output_path = Pathname(Tempfile.open(&:path))
-  end
+  setup_tmp_path(:@output_path)
 
   test("default") do
     run_command(TEST_ASSETS_PATH / "i.png", @output_path)
