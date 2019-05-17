@@ -3,7 +3,6 @@ require "test_helper"
 class CommandTest < TestCase
   COMMAND =
     %W[ruby -I#{TOP_SRC_PATH / "lib"} #{TOP_SRC_PATH / "exe/image_to_pdf"}]
-  TEST_ASSETS_PATH = TOP_SRC_PATH / "test/assets"
 
   setup do
     @output_path = Pathname(Tempfile.open(&:path))
