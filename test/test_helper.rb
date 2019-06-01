@@ -18,9 +18,17 @@ class TestCase < Test::Unit::TestCase
 
   private
 
-  def assert_file_content(expected_path, actual_path)
-    assert_equal(Digest::MD5.file(expected_path).hexdigest,
-                 Digest::MD5.file(actual_path).hexdigest,
+  def assert_pdf_content(expected_path, actual_path)
+    assert_equal(pdf_content_digest(expected_path),
+                 pdf_content_digest(actual_path),
                  "#{expected_path} != #{actual_path}")
+  end
+
+  def pdf_content_digest(pdf_path)
+    content = pdf_path.binread.
+                sub(%r|^(<< )/Creator <[0-9a-f]+?>|, '\\1').
+                sub(/(?<=\nxref\n0 ).*(?=trailer\n)/m, "").
+                sub(/^(?<=startxref\n)\d+/, "")
+    return Digest::MD5.hexdigest(content)
   end
 end

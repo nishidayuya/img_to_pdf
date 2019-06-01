@@ -8,7 +8,7 @@ class CommandTest < TestCase
 
   test("default") do
     run_command(TEST_ASSETS_PATH / "i.png", @output_path)
-    assert_file_content(TEST_ASSETS_PATH / "i-default.pdf", @output_path)
+    assert_pdf_content(TEST_ASSETS_PATH / "i-default.pdf", @output_path)
   end
 
   test("with arguments") do
@@ -21,7 +21,7 @@ class CommandTest < TestCase
       TEST_ASSETS_PATH / "i.png",
       @output_path,
     )
-    assert_file_content(TEST_ASSETS_PATH / "i-b5-portrait-3x4.pdf", @output_path)
+    assert_pdf_content(TEST_ASSETS_PATH / "i-b5-portrait-3x4.pdf", @output_path)
   end
 
   private

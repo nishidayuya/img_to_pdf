@@ -37,7 +37,7 @@ class ImageToPdf::FitPageDocumentTest < TestCase
     }
     test("render PDF file") do |args:, expected_path:|
       ImageToPdf::FitPageDocument.create(**args).render_file(@output_path)
-      assert_file_content(expected_path, @output_path)
+      assert_pdf_content(expected_path, @output_path)
     end
   end
 end
