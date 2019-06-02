@@ -1,13 +1,13 @@
 require "test_helper"
 
-class ImageToPdf::IntegerParserTest < TestCase
+class ImgToPdf::IntegerParserTest < TestCase
   test("'123' is parsable") do
-    assert_equal(123, ImageToPdf::IntegerParser.("123"))
+    assert_equal(123, ImgToPdf::IntegerParser.("123"))
   end
 
   test("'a123' is not parsable") do
-    assert_raise(ImageToPdf::ParserError) do
-      ImageToPdf::IntegerParser.("a123")
+    assert_raise(ImgToPdf::ParserError) do
+      ImgToPdf::IntegerParser.("a123")
     end
   end
 end

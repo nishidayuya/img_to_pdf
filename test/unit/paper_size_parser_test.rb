@@ -1,8 +1,8 @@
 require "test_helper"
 
-require "image_to_pdf/paper_size_parser"
+require "img_to_pdf/paper_size_parser"
 
-class ImageToPdf::PaperSizeParserTest < TestCase
+class ImgToPdf::PaperSizeParserTest < TestCase
   data {
     {
       "a4-landscape" => PDF::Core::PageGeometry::SIZES["A4"].reverse,
@@ -10,12 +10,12 @@ class ImageToPdf::PaperSizeParserTest < TestCase
     }.each.with_object({}) do |(paper_size_text, expected_size_ary), h|
       h[paper_size_text] = {
         paper_size_text: paper_size_text,
-        expected: ImageToPdf::Dimension.from_array(expected_size_ary),
+        expected: ImgToPdf::Dimension.from_array(expected_size_ary),
       }
     end
   }
   test("parsable") do |paper_size_text:, expected:|
-    assert_equal(expected, ImageToPdf::PaperSizeParser.(paper_size_text))
+    assert_equal(expected, ImgToPdf::PaperSizeParser.(paper_size_text))
   end
 
   data {
@@ -24,8 +24,8 @@ class ImageToPdf::PaperSizeParserTest < TestCase
     end
   }
   test("not parsable") do |paper_size_text|
-    assert_raise(ImageToPdf::ParserError) do
-      ImageToPdf::PaperSizeParser.(paper_size_text)
+    assert_raise(ImgToPdf::ParserError) do
+      ImgToPdf::PaperSizeParser.(paper_size_text)
     end
   end
 end

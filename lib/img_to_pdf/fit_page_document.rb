@@ -1,14 +1,14 @@
 require "prawn"
 
-require "image_to_pdf"
+require "img_to_pdf"
 
-class ImageToPdf::FitPageDocument
-  # @param [ImageToPdf::Dimension] page_dimension_pt page size. points.
-  # @param [ImageToPdf::Margin] margin_pt margin size. points.
-  # @param [ImageToPdf::Image] image source image.
+class ImgToPdf::FitPageDocument
+  # @param [ImgToPdf::Dimension] page_dimension_pt page size. points.
+  # @param [ImgToPdf::Margin] margin_pt margin size. points.
+  # @param [ImgToPdf::Image] image source image.
   # @param [Integer] n_horizontal_pages number of horizontal pages.
   # @param [Integer] n_vertical_pages number of vertical pages.
-  # @return [ImageToPdf::FitPageDocument] document to render PDF.
+  # @return [ImgToPdf::FitPageDocument] document to render PDF.
   def self.create(page_dimension_pt:, margin_pt:, image:,
                   n_horizontal_pages: 1, n_vertical_pages: 1)
     result = new(page_dimension_pt: page_dimension_pt, margin_pt: margin_pt,
@@ -32,7 +32,7 @@ class ImageToPdf::FitPageDocument
       margin: @margin_pt.to_a,
       skip_page_creation: true,
       info: {
-        Creator: "image_to_pdf version #{ImageToPdf::VERSION}",
+        Creator: "img_to_pdf version #{ImgToPdf::VERSION}",
       },
     )
   end
@@ -40,7 +40,7 @@ class ImageToPdf::FitPageDocument
   def draw
     canvas_dimension_pt = determine_canvas_dimension_pt
     canvas_scale = determine_canvas_scale(canvas_dimension_pt)
-    sub_image_dimension_px = ImageToPdf::Dimension.new(
+    sub_image_dimension_px = ImgToPdf::Dimension.new(
       width: @image.dimension_px.width / @n_horizontal_pages,
       height: @image.dimension_px.height / @n_vertical_pages,
     )
@@ -66,7 +66,7 @@ class ImageToPdf::FitPageDocument
         @n_horizontal_pages
     h = (@page_dimension_pt.height - @margin_pt.top - @margin_pt.bottom) *
         @n_vertical_pages
-    return ImageToPdf::Dimension.new(width: w, height: h)
+    return ImgToPdf::Dimension.new(width: w, height: h)
   end
 
   def determine_canvas_scale(canvas_dimension_pt)

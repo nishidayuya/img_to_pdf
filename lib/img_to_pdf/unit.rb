@@ -1,6 +1,6 @@
-require "image_to_pdf"
+require "img_to_pdf"
 
-module ImageToPdf::Unit
+module ImgToPdf::Unit
   extend self
 
   # @param [Float] mm source length. millimeters.

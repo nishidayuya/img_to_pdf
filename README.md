@@ -1,8 +1,8 @@
-# image_to_pdf
+# img_to_pdf
 
 A tool to create PDF from raster image.
 
-[![License X11](https://img.shields.io/badge/license-X11-brightgreen.svg)](https://raw.githubusercontent.com/nishidayuya/image_to_pdf/master/LICENSE.txt)
+[![License X11](https://img.shields.io/badge/license-X11-brightgreen.svg)](https://raw.githubusercontent.com/nishidayuya/img_to_pdf/master/LICENSE.txt)
 
 ## Requirements
 
@@ -12,7 +12,7 @@ A tool to create PDF from raster image.
 ## Installation
 
 ```sh
-$ gem install image_to_pdf
+$ gem install img_to_pdf
 ```
 
 ## Usage
@@ -20,13 +20,13 @@ $ gem install image_to_pdf
 Create PDF from PNG:
 
 ```sh
-$ image_to_pdf input.png output.pdf
+$ img_to_pdf input.png output.pdf
 ```
 
 Same as:
 
 ```sh
-$ image_to_pdf \
+$ img_to_pdf \
     --paper-size=a4-landscape \
     --horizontal-pages=1 \
     --vertical-pages=1 \
@@ -36,7 +36,7 @@ $ image_to_pdf \
 Create 3x4 pages B5 portrait PDF from JPG:
 
 ```
-$ image_to_pdf \
+$ img_to_pdf \
     --paper-size=b5-portrait \
     --horizontal-pages=3 \
     --vertical-pages=4 \
@@ -46,9 +46,9 @@ $ image_to_pdf \
 Show help message:
 
 ```
-$ image_to_pdf --help
+$ img_to_pdf --help
 ```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/nishidayuya/image_to_pdf .
+Bug reports and pull requests are welcome on GitHub at https://github.com/nishidayuya/img_to_pdf .

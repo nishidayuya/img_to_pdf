@@ -1,16 +1,16 @@
 require "test_helper"
 
-class ImageToPdf::DimensionTest < TestCase
+class ImgToPdf::DimensionTest < TestCase
   sub_test_case(".from_array") do
     test("return instance from array") do
-      assert_equal(ImageToPdf::Dimension.new(width: 1, height: 2),
-                   ImageToPdf::Dimension.from_array([1, 2]))
+      assert_equal(ImgToPdf::Dimension.new(width: 1, height: 2),
+                   ImgToPdf::Dimension.from_array([1, 2]))
     end
   end
 
   sub_test_case("#to_a") do
     test("return array") do
-      assert_equal([1, 2], ImageToPdf::Dimension.new(width: 1, height: 2).to_a)
+      assert_equal([1, 2], ImgToPdf::Dimension.new(width: 1, height: 2).to_a)
     end
   end
 
@@ -30,14 +30,14 @@ class ImageToPdf::DimensionTest < TestCase
       },
     )
     test("") do |returns:, value:|
-      assert_equal(returns, ImageToPdf::Dimension.new(**value).direction)
+      assert_equal(returns, ImgToPdf::Dimension.new(**value).direction)
     end
   end
 
   sub_test_case("#transpose") do
     test("return transposed dimension") do
-      assert_equal(ImageToPdf::Dimension.new(width: 2, height: 1),
-                   ImageToPdf::Dimension.new(width: 1, height: 2).transpose)
+      assert_equal(ImgToPdf::Dimension.new(width: 2, height: 1),
+                   ImgToPdf::Dimension.new(width: 1, height: 2).transpose)
     end
   end
 
@@ -53,7 +53,7 @@ class ImageToPdf::DimensionTest < TestCase
       },
     )
     test("return transposed it if different direction") do |value:, direction:|
-      d = ImageToPdf::Dimension.new(**value)
+      d = ImgToPdf::Dimension.new(**value)
       assert_equal(d.transpose, d.justify_direction(direction))
     end
 
@@ -68,7 +68,7 @@ class ImageToPdf::DimensionTest < TestCase
       },
     )
     test("return dupped it if same direction") do |value:, direction:|
-      d = ImageToPdf::Dimension.new(**value)
+      d = ImgToPdf::Dimension.new(**value)
       result = d.justify_direction(direction)
       assert_equal(d, result)
       assert_not_equal(d.object_id, result.object_id)
@@ -77,11 +77,11 @@ class ImageToPdf::DimensionTest < TestCase
 
   sub_test_case("#pt_to_in") do
     test("return converted it") do
-      assert_equal(ImageToPdf::Dimension.new(
-                     width: ImageToPdf::Unit.convert_pt_to_in(10),
-                     height: ImageToPdf::Unit.convert_pt_to_in(20),
+      assert_equal(ImgToPdf::Dimension.new(
+                     width: ImgToPdf::Unit.convert_pt_to_in(10),
+                     height: ImgToPdf::Unit.convert_pt_to_in(20),
                    ),
-                   ImageToPdf::Dimension.new(width: 10, height: 20).pt_to_in)
+                   ImgToPdf::Dimension.new(width: 10, height: 20).pt_to_in)
     end
   end
 end

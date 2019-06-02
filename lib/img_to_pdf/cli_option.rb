@@ -1,8 +1,8 @@
 require "optparse"
 
-require "image_to_pdf"
+require "img_to_pdf"
 
-class ImageToPdf::CliOption < Struct.new(:input_path, :output_path, :debug,
+class ImgToPdf::CliOption < Struct.new(:input_path, :output_path, :debug,
                                          :paper_size_text, :margin_pt,
                                          :n_horizontal_pages, :n_vertical_pages,
                                          keyword_init: true)
@@ -12,13 +12,13 @@ EOS
 
   class << self
     def default
-      default_margin_pt = ImageToPdf::Unit.convert_mm_to_pt(10)
+      default_margin_pt = ImgToPdf::Unit.convert_mm_to_pt(10)
       return new(
                input_path: nil,
                output_path: nil,
                debug: false,
                paper_size_text: "a4-landscape",
-               margin_pt: ImageToPdf::Margin.new(
+               margin_pt: ImgToPdf::Margin.new(
                  left: default_margin_pt,
                  right: default_margin_pt,
                  top: default_margin_pt,
@@ -33,7 +33,7 @@ EOS
       result = default
 
       parser = OptionParser.new
-      parser.version = ImageToPdf::VERSION
+      parser.version = ImgToPdf::VERSION
       parser.banner = BANNER
       parser.summary_indent = ""
       parser.separator("")
@@ -44,11 +44,11 @@ EOS
       end
       parser.on("--horizontal-pages=INTEGER",
                 "specify number of horizontal pages. default 1.") do |v|
-        result.n_horizontal_pages = ImageToPdf::IntegerParser.(v)
+        result.n_horizontal_pages = ImgToPdf::IntegerParser.(v)
       end
       parser.on("--vertical-pages=INTEGER",
                 "specify number of vertical pages. default 1.") do |v|
-        result.n_vertical_pages = ImageToPdf::IntegerParser.(v)
+        result.n_vertical_pages = ImgToPdf::IntegerParser.(v)
       end
       parser.on("--debug") do
         result.debug = true

@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "img_to_pdf"
+
+ImgToPdf::Cli.run(ARGV)

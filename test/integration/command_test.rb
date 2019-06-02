@@ -2,7 +2,7 @@ require "test_helper"
 
 class CommandTest < TestCase
   COMMAND =
-    %W[ruby -I#{TOP_SRC_PATH / "lib"} #{TOP_SRC_PATH / "exe/image_to_pdf"}]
+    %W[ruby -I#{TOP_SRC_PATH / "lib"} #{TOP_SRC_PATH / "exe/img_to_pdf"}]
 
   setup_tmp_path(:@output_path)
 
