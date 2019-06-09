@@ -3,6 +3,7 @@
 A tool to create PDF from raster image.
 
 [![License X11](https://img.shields.io/badge/license-X11-brightgreen.svg)](https://raw.githubusercontent.com/nishidayuya/img_to_pdf/master/LICENSE.txt)
+[![Gem Version](https://badge.fury.io/rb/img_to_pdf.svg)](https://rubygems.org/gems/img_to_pdf)
 
 ## Requirements
 
