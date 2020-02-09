@@ -10,6 +10,7 @@ jobs:
     strategy:
       matrix:
         ruby:
+          - 2.7.x
           - 2.6.x
     runs-on: ubuntu-18.04
     steps:
