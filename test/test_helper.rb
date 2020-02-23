@@ -1,3 +1,6 @@
+require "simplecov"
+SimpleCov.start
+
 require "digest/md5"
 require "tempfile"
 
