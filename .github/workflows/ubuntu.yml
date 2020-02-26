@@ -29,3 +29,8 @@ jobs:
           gem install bundler --no-document
           bundle install --jobs=$(nproc) --retry=3
           bundle exec rake
+      - uses: actions/upload-artifact@v2
+        with:
+          name: coverage_report
+          path: coverage/
+        if: always()
