@@ -38,5 +38,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "rake"
   spec.add_development_dependency "simplecov"
+  # for broken test-reporter:
+  # https://github.com/codeclimate/test-reporter/issues/418
+  spec.add_development_dependency "simplecov-lcov"
   spec.add_development_dependency "test-unit"
 end
