@@ -29,6 +29,11 @@ jobs:
           gem install bundler --no-document
           bundle install --jobs=$(nproc) --retry=3
           bundle exec rake
+      - name: Upload coverage report to Code Climate
+        uses: aktions/codeclimate-test-reporter@v1
+        with:
+          codeclimate-test-reporter-id: ${{ secrets.CODE_CLIMATE_TEST_REPORTER_ID }}
+          command: after-build --coverage-input-type lcov
       - uses: actions/upload-artifact@v2
         with:
           name: coverage_report
