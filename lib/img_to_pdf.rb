@@ -11,6 +11,7 @@ module ImgToPdf
     class_name = no_ext_path.basename.to_s.
                    split("_").map(&:capitalize).join.to_sym
     next if class_name == :Version
+
     autoload(class_name, no_ext_path.to_s)
   end
 end

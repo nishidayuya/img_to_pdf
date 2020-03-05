@@ -25,6 +25,7 @@ class ImgToPdf::Image
   # @return [ImgToPdf::Dimension] image dimension. pixels.
   def dimension_px
     return @dimension_px if @dimension_px
+
     image_klass = Prawn::Images.const_get(path.extname.upcase.sub(/\A\./, ""))
     image = image_klass.new(path.read)
     @dimension_px = ImgToPdf::Dimension.new(width: image.width,
