@@ -1,5 +1,6 @@
 require "img_to_pdf"
 
+# Parser for integer string
 module ImgToPdf::IntegerParser
   extend self
 

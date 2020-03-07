@@ -2,6 +2,7 @@ require "pdf/core/page_geometry"
 
 require "img_to_pdf"
 
+# Parser for paper size
 module ImgToPdf::PaperSizeParser
   extend self
 

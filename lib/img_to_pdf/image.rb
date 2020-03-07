@@ -5,6 +5,7 @@ require "prawn"
 
 require "img_to_pdf"
 
+# An image model
 class ImgToPdf::Image
   attr_reader :path
 

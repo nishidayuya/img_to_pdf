@@ -1,5 +1,6 @@
 require "pathname"
 
+# Namespace module
 module ImgToPdf
   autoload(:VERSION, "img_to_pdf/version")
 

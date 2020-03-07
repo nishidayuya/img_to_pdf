@@ -2,6 +2,7 @@ require "prawn"
 
 require "img_to_pdf"
 
+# A document model
 class ImgToPdf::FitPageDocument
   # @param [ImgToPdf::Dimension] page_dimension_pt page size. points.
   # @param [ImgToPdf::Margin] margin_pt margin size. points.

@@ -2,6 +2,7 @@ require "tmpdir"
 
 require "img_to_pdf"
 
+# Command line program entrypoint
 module ImgToPdf::Cli
   extend self
 

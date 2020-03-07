@@ -2,6 +2,7 @@ require "optparse"
 
 require "img_to_pdf"
 
+# Command line option model
 class ImgToPdf::CliOption < Struct.new(:input_path, :output_path, :debug,
                                          :paper_size_text, :margin_pt,
                                          :n_horizontal_pages, :n_vertical_pages,

@@ -1,5 +1,6 @@
 require "img_to_pdf"
 
+# Unit conversion module
 module ImgToPdf::Unit
   extend self
 
