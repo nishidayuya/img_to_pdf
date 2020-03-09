@@ -4,7 +4,7 @@ require "img_to_pdf"
 
 # Parser for paper size
 module ImgToPdf::PaperSizeParser
-  extend self
+  module_function
 
   AVAILABLE_DIRECTIONS = %i[landscape portrait]
 

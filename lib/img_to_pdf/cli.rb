@@ -4,7 +4,7 @@ require "img_to_pdf"
 
 # Command line program entrypoint
 module ImgToPdf::Cli
-  extend self
+  module_function
 
   def run(argv)
     option = ImgToPdf::CliOption.from_argv(argv)

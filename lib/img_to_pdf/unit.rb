@@ -2,7 +2,7 @@ require "img_to_pdf"
 
 # Unit conversion module
 module ImgToPdf::Unit
-  extend self
+  module_function
 
   # @param [Float] mm source length. millimeters.
   # @return [Float] destination length. points.

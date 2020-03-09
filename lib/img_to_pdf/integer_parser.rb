@@ -2,7 +2,7 @@ require "img_to_pdf"
 
 # Parser for integer string
 module ImgToPdf::IntegerParser
-  extend self
+  module_function
 
   def call(s)
     md = /\A\d+\z/.match(s)
