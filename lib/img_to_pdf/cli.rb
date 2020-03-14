@@ -20,7 +20,8 @@ module ImgToPdf::Cli
     document.render_file(option.output_path)
   rescue ImgToPdf::Error => e
     raise if option.debug
-    STDERR.puts("#{e.class.name}: #{e.message}")
+
+    warn("#{e.class.name}: #{e.message}")
     exit(1)
   end
 end
