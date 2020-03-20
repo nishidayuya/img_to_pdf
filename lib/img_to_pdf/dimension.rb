@@ -1,6 +1,6 @@
 require "img_to_pdf"
 
-class ImgToPdf::Dimension < Struct.new(:width, :height, keyword_init: true)
+ImgToPdf::Dimension = Struct.new(:width, :height, keyword_init: true) do
   class << self
     # @param [Array<(Float, Float)>] ary `[width, height]`.
     # @return ImgToPdf::Dimension parsed.

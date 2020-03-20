@@ -2,11 +2,13 @@ require "optparse"
 
 require "img_to_pdf"
 
+ImgToPdf::CliOption = Struct.new(
+  :input_path, :output_path, :debug, :paper_size_text, :margin_pt,
+  :n_horizontal_pages, :n_vertical_pages,
+  keyword_init: true,
+)
 # Command line option model
-class ImgToPdf::CliOption < Struct.new(:input_path, :output_path, :debug,
-                                         :paper_size_text, :margin_pt,
-                                         :n_horizontal_pages, :n_vertical_pages,
-                                         keyword_init: true)
+class ImgToPdf::CliOption
   BANNER = <<EOS.chomp
 Usage: #{File.basename(Process.argv0)} [options] input_image_path output_pdf_path
 EOS
