@@ -1,6 +1,6 @@
 require "pathname"
 
-require_relative 'lib/img_to_pdf/version'
+require_relative "lib/img_to_pdf/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "img_to_pdf"
