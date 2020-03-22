@@ -9,9 +9,9 @@ ImgToPdf::CliOption = Struct.new(
 )
 # Command line option model
 class ImgToPdf::CliOption
-  BANNER = <<EOS.chomp
-Usage: #{File.basename(Process.argv0)} [options] input_image_path output_pdf_path
-EOS
+  BANNER = <<~BANNER.chomp
+    Usage: #{File.basename(Process.argv0)} [options] input_image_path output_pdf_path
+  BANNER
 
   class << self
     def default
