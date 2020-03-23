@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
     warn("No README.md, so cannot set gem summary and description.")
   end
 
-  spec.homepage      = "https://github.com/nishidayuya/" + spec.name
+  spec.homepage      = "https://github.com/nishidayuya/#{spec.name}"
   spec.license       = "X11"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
 
