@@ -34,7 +34,10 @@ ImgToPdf::Dimension = Struct.new(:width, :height, keyword_init: true) do
   #
   # @return [ImgToPdf::Dimension] inch dimension.
   def pt_to_in
-    return self.class.new(width: ImgToPdf::Unit.convert_pt_to_in(width),
-                          height: ImgToPdf::Unit.convert_pt_to_in(height))
+    result = self.class.new(
+      width: ImgToPdf::Unit.convert_pt_to_in(width),
+      height: ImgToPdf::Unit.convert_pt_to_in(height),
+    )
+    return result
   end
 end

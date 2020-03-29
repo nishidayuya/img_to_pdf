@@ -28,8 +28,7 @@ class ImgToPdf::Image
 
     image_klass = Prawn::Images.const_get(path.extname.upcase.sub(/\A\./, ""))
     image = image_klass.new(path.read)
-    @dimension_px = ImgToPdf::Dimension.new(width: image.width,
-                                              height: image.height)
+    @dimension_px = ImgToPdf::Dimension.new(width: image.width, height: image.height)
     return @dimension_px
   end
 

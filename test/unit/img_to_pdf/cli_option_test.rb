@@ -11,13 +11,15 @@ class ImgToPdf::CliOptionTest < TestCase
       expected.input_path = Pathname("/path/to/input.png")
       expected.output_path = TOP_SRC_PATH / "output.pdf"
       actual = assert_nothing_raised {
-        ImgToPdf::CliOption.from_argv(%w[
-          --paper-size=b5-portrait
-          --horizontal-pages=3
-          --vertical-pages=4
-          --debug
-          /path/to/input.png ./output.pdf
-        ])
+        ImgToPdf::CliOption.from_argv(
+          %w[
+            --paper-size=b5-portrait
+            --horizontal-pages=3
+            --vertical-pages=4
+            --debug
+            /path/to/input.png ./output.pdf
+          ],
+        )
       }
       assert_equal(expected, actual)
     end

@@ -12,10 +12,13 @@ class ImgToPdf::FitPageDocument
   # @return [ImgToPdf::FitPageDocument] document to render PDF.
   def self.create(page_dimension_pt:, margin_pt:, image:,
                   n_horizontal_pages: 1, n_vertical_pages: 1)
-    result = new(page_dimension_pt: page_dimension_pt, margin_pt: margin_pt,
-                 n_horizontal_pages: n_horizontal_pages,
-                 n_vertical_pages: n_vertical_pages,
-                 image: image)
+    result = new(
+      page_dimension_pt: page_dimension_pt,
+      margin_pt: margin_pt,
+      n_horizontal_pages: n_horizontal_pages,
+      n_vertical_pages: n_vertical_pages,
+      image: image,
+    )
     result.draw
     return result
   end
@@ -81,10 +84,12 @@ class ImgToPdf::FitPageDocument
   def each_sub_image(sub_image_dimension_px)
     @n_vertical_pages.times do |i_y|
       @n_horizontal_pages.times do |i_x|
-        @image.crop(sub_image_dimension_px.width * i_x,
-                    sub_image_dimension_px.height * i_y,
-                    sub_image_dimension_px.width,
-                    sub_image_dimension_px.height) do |sub_image|
+        @image.crop(
+          sub_image_dimension_px.width * i_x,
+          sub_image_dimension_px.height * i_y,
+          sub_image_dimension_px.width,
+          sub_image_dimension_px.height,
+        ) do |sub_image|
           yield(sub_image)
         end
       end
