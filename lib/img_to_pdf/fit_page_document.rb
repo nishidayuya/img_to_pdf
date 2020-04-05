@@ -81,7 +81,7 @@ class ImgToPdf::FitPageDocument
     return 72 / canvas_dpi
   end
 
-  def each_sub_image(sub_image_dimension_px)
+  def each_sub_image(sub_image_dimension_px, &block)
     @n_vertical_pages.times do |i_y|
       @n_horizontal_pages.times do |i_x|
         @image.crop(
@@ -90,7 +90,7 @@ class ImgToPdf::FitPageDocument
           sub_image_dimension_px.width,
           sub_image_dimension_px.height,
         ) do |sub_image|
-          yield(sub_image)
+          block.(sub_image)
         end
       end
     end
