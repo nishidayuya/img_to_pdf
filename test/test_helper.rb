@@ -42,7 +42,7 @@ class TestCase < Test::Unit::TestCase
 
   def pdf_content_digest(pdf_path)
     content = pdf_path.binread.
-                sub(%r|^(<< )/Creator <[0-9a-f]+?>|, '\\1').
+                sub(%r{^(<< )/Creator <[0-9a-f]+?>}, '\\1').
                 sub(/(?<=\nxref\n0 ).*(?=trailer\n)/m, "").
                 sub(/^(?<=startxref\n)\d+/, "")
     return Digest::MD5.hexdigest(content)
