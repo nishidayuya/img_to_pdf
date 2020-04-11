@@ -64,11 +64,11 @@ class ImgToPdf::DimensionTest < TestCase
     data(
       landscape: {
         value: {width: 2, height: 1},
-        direction: :landscape
+        direction: :landscape,
       },
       portrait: {
         value: {width: 1, height: 2},
-        direction: :portrait
+        direction: :portrait,
       },
     )
     test("return dupped it if same direction") do |value:, direction:|
