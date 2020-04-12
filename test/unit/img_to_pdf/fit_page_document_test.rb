@@ -23,7 +23,7 @@ class ImgToPdf::FitPageDocumentTest < TestCase
           "i-b5-portrait-3x4.pdf",
           "b5-portrait",
           {n_horizontal_pages: 3, n_vertical_pages: 4},
-        ]
+        ],
       ].each.with_object({}) do |(expected_filename, page_size_text, args), h|
         h[expected_filename] = {
           args: args.merge(
