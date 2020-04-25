@@ -6,7 +6,7 @@ require "img_to_pdf"
 module ImgToPdf::Cli
   module_function
 
-  def run(argv)
+  def run(argv) # rubocop:disable Metrics/AbcSize
     option = ImgToPdf::CliOption.from_argv(argv)
     page_dimension_pt = ImgToPdf::PaperSizeParser.(option.paper_size_text)
     input_image = ImgToPdf::Image.from_path(option.input_path)
