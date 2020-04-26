@@ -33,7 +33,7 @@ class ImgToPdf::CliOption
       return result
     end
 
-    def from_argv(argv, stdout: STDOUT) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    def from_argv(argv, stdout: $stdout) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       result = default
 
       parser = OptionParser.new
