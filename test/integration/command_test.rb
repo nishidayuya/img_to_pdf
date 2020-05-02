@@ -13,11 +13,9 @@ class CommandTest < TestCase
 
   test("with arguments") do
     run_command(
-      *%w[
-        --paper-size=b5-portrait
-        --horizontal-pages=3
-        --vertical-pages=4
-      ],
+      "--paper-size=b5-portrait",
+      "--horizontal-pages=3",
+      "--vertical-pages=4",
       TEST_ASSETS_PATH / "i.png",
       @output_path,
     )
