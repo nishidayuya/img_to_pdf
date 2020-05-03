@@ -37,6 +37,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "prawn"
 
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "rubocop"
   spec.add_development_dependency "simplecov"
   # for broken test-reporter:
   # https://github.com/codeclimate/test-reporter/issues/418
