@@ -1,0 +1,112 @@
+AllCops:
+  NewCops: enable
+
+# We adopt "Semantic Block".
+# In "Semantic Block" way, "{...}" block and "do ... end" block are
+# NOT same semantics.
+#
+# * "{...}" block specifies last evaluated value.
+#   Block caller can use block result.
+# * "do ... end" block doesn't specify last evaluated value.
+#   So, block caller MUST NOT use block result.
+Style/BlockDelimiters:
+  EnforcedStyle: semantic
+  FunctionalMethods:
+    - data # Data driven tests on test-unit.gem
+
+# For low indent level.
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+# From number of terminal lines - 2 ("def" line and "end" line).
+Metrics/MethodLength:
+  Max: 22
+
+# "if !a" is better than "unless a", we think.
+# Because condition(s) often will be appended another codition(s).
+# In "unless a" case, we'll inverse codition(s).
+#
+# Which do you like?
+# * unless: "unless a" + "&& b"
+#   We'll waver between "unless a || !b" and "if !a && b".
+#   In either case, our brain must inverse condition.
+# * if !: "if !a" + "&& b"
+#   We'll write "if !a && b" without inverse.
+Style/NegatedIf:
+  Enabled: false
+
+# Sometimes we add "#{...}" to string which is already exists.
+#
+# Which do you like?
+# * single_quotes: 'foo' + "#{a}" => "foo#{a}"
+#   Oops, we must change from ' to ". And we take extra differences.
+#   (Try "git diff --color-words=." or "git log -p --color-words=.")
+# * double_quotes: "foo" + "#{a}" => "foo#{a}"
+#   There is no problem on another case.
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# To define private constants.
+Lint/UselessAccessModifier:
+  Enabled: false
+
+# Less code is better than more code.
+Style/LambdaCall:
+  EnforcedStyle: braces
+
+# Less diff to last line changes.
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInBlockArgs:
+  Enabled: true
+
+# Not used.
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+Metrics/BlockLength:
+  ExcludedMethods:
+    - data # Data driven test data on test-unit.gem
+    - test # Test method on test-unit.gem
+    - sub_test_case # Test grouping on test-unit.gem
+
+# Distinguish hash from functional blocks.
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+# Write "return" is NOT redundant.
+# Because if not "return", we don't know specified return value or
+# last evaluated value.
+# Sometimes we don't write YARD @return
+# (private methods, method by define_method, and so on)
+Style/RedundantReturn:
+  Enabled: false
+
+# REPL (eg. irb, pry, ...) friendly style.
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+# We can care it. At own risk.
+Style/MutableConstant:
+  Enabled: false
+
+Naming/MethodParameterName:
+  AllowedNames:
+    - mm # milli meters
+    - pt # points
+    - x # position-x
+    - y # position-y
+    - s # string
+
+# For ruby-mode friendly
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+
+# TODO: In "#{...}" as single_quotes, but in "%Q{#{...}}" as double_quotes
+Style/StringLiteralsInInterpolation:
+  Enabled: false
