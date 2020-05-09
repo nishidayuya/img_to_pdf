@@ -9,4 +9,4 @@ end
 
 RuboCop::RakeTask.new
 
-task(default: %i[test])
+task(default: %i[test rubocop])
