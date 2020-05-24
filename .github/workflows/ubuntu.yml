@@ -28,7 +28,7 @@ jobs:
           sudo apt install -y imagemagick
           gem install bundler --no-document
           bundle install --jobs=$(nproc) --retry=3
-          bundle exec rake
+          bundle exec rake TESTOPTS=--verbose
       - name: Upload coverage report to Code Climate
         uses: aktions/codeclimate-test-reporter@v1
         with:
