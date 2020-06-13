@@ -23,12 +23,14 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-      - name: Build and test with Rake
+      - name: Install other dependencies
         run: |
           set -eux
           sudo apt install -y imagemagick
           gem install bundler --no-document
           bundle install --jobs=$(nproc) --retry=3
+      - name: Build and test with Rake
+        run: |
           bundle exec rake TESTOPTS=--verbose
       - name: Upload coverage report to Code Climate
         uses: aktions/codeclimate-test-reporter@v1
