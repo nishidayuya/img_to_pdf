@@ -33,6 +33,14 @@ jobs:
           sudo apt install -y imagemagick
           gem install bundler --no-document
           bundle install --jobs=$(nproc) --retry=3
+      - name: Output versions
+        run: |
+          set -eux
+          git version
+          ruby --version
+          gem --version
+          bundle --version
+          convert --version
       - name: Build and test with Rake
         run: |
           bundle exec rake TESTOPTS=--verbose
