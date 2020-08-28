@@ -23,6 +23,5 @@ jobs:
         run: |
           set -eux
           sudo apt install -y imagemagick
-          gem install bundler --no-document
           bundle install --jobs=$(nproc) --retry=3
           bundle exec rake
