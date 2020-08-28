@@ -19,9 +19,19 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-      - name: Build and test with Rake
+      - name: Install dependencies
         run: |
           set -eux
           sudo apt install -y imagemagick
           bundle install --jobs=$(nproc) --retry=3
+      - name: Output versions
+        run: |
+          set -eux
+          ruby --version
+          gem --version
+          bundle --version
+          convert --version
+      - name: Run test
+        run: |
+          set -eux
           bundle exec rake
