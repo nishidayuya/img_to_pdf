@@ -1,0 +1,41 @@
+name: windows
+
+on:
+  - push
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os:
+          - windows-2019
+          - windows-2016
+        ruby:
+          - ruby-2.7
+          - ruby-2.6
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Install dependencies
+        run: |
+          choco install imagemagick --yes
+          bundle install
+      - name: Output versions
+        run: |
+          echo git version
+          git version
+          echo ruby version
+          ruby --version
+          echo gem version
+          gem --version
+          echo bundle version
+          bundle --version
+          echo imagemagick version
+          convert --version
+      - name: Run test
+        run: |
+          bundle exec rake
