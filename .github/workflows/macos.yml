@@ -1,0 +1,35 @@
+name: macos
+
+on:
+  - push
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        ruby:
+          - ruby-2.7
+          - ruby-2.6
+    runs-on: macos-10.15
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: ${{ matrix.ruby }}
+      - name: Install dependencies
+        run: |
+          set -eux
+          brew install imagemagick
+      - name: Output versions
+        run: |
+          set -eux
+          ruby --version
+          gem --version
+          bundle --version
+          convert --version
+      - name: Run test
+        run: |
+          set -eux
+          bundle exec rake
