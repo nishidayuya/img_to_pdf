@@ -35,8 +35,11 @@ jobs:
           echo bundle version
           bundle --version
           echo where convert
+          refreshenv
           which convert
           which magick
+          path
+          dir C:\\Program Files\\ImageMagick-7.0.10-Q16-HDRI
           echo imagemagick version
           magick convert --version
       - name: Run test
