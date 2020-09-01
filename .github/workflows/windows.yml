@@ -22,6 +22,7 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
       - name: Install dependencies
         run: |
+          # choco install imagemagick --yes
           bundle install
       - name: Output versions
         run: |
@@ -33,6 +34,8 @@ jobs:
           gem --version
           echo bundle version
           bundle --version
+          echo where convert
+          which convert
           echo imagemagick version
           convert --version
       - name: Run test
