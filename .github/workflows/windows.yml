@@ -36,10 +36,9 @@ jobs:
           bundle --version
           echo where convert
           refreshenv
-          echo %PATH%
-          path
-          which convert
-          set PATH=%PATH%;C:\\Program Files\\ImageMagick-7.0.10-Q16-HDRI\\bin
+          $ENV:Path.Split(";")
+          $ENV:Path+=C:\\Program Files\\ImageMagick-7.0.10-Q16-HDRI
+          $ENV:Path.Split(";")
           dir C:\\Program Files\\ImageMagick-7.0.10-Q16-HDRI
           which magick
           echo imagemagick version
