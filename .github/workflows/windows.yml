@@ -9,9 +9,9 @@ jobs:
       matrix:
         os:
           - windows-2019
-          - windows-2016
+#          - windows-2016
         ruby:
-          - ruby-2.7
+#          - ruby-2.7
           - ruby-2.6
     runs-on: ${{ matrix.os }}
     steps:
