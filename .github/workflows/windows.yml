@@ -27,6 +27,7 @@ jobs:
           bundle install
       - name: Output versions
         run: |
+          $ENV:Path+=";C:\Program Files\ImageMagick-7.0.10-Q16-HDRI"
           echo git version
           git version
           echo ruby version
@@ -39,4 +40,5 @@ jobs:
           magick convert --version
       - name: Run test
         run: |
+          $ENV:Path+=";C:\Program Files\ImageMagick-7.0.10-Q16-HDRI"
           bundle exec rake
