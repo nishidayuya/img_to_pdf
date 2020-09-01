@@ -23,6 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           choco install imagemagick --yes
+          dir /S C:\Program Files\ImageMagick-7.0.10-Q16-HDRI
           bundle install
       - name: Output versions
         run: |
@@ -37,9 +38,8 @@ jobs:
           echo where convert
           refreshenv
           $ENV:Path.Split(";")
-          $ENV:Path+=C:\\Program Files\\ImageMagick-7.0.10-Q16-HDRI
+          $ENV:Path+=";C:\Program Files\ImageMagick-7.0.10-Q16-HDRI"
           $ENV:Path.Split(";")
-          dir C:\\Program Files\\ImageMagick-7.0.10-Q16-HDRI
           which magick
           echo imagemagick version
           magick convert --version
