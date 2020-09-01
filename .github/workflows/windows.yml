@@ -36,10 +36,12 @@ jobs:
           bundle --version
           echo where convert
           refreshenv
-          which convert
-          which magick
+          echo %PATH%
           path
+          which convert
+          set PATH=%PATH%;C:\\Program Files\\ImageMagick-7.0.10-Q16-HDRI\\bin
           dir C:\\Program Files\\ImageMagick-7.0.10-Q16-HDRI
+          which magick
           echo imagemagick version
           magick convert --version
       - name: Run test
