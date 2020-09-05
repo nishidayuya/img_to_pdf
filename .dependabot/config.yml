@@ -9,3 +9,4 @@ update_configs:
           update_type: all
     commit_message:
       prefix: chore
+    version_requirement_updates: "off"
