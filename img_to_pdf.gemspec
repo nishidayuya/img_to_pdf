@@ -8,9 +8,15 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Yuya.Nishida."]
   spec.email         = ["yuya@j96.org"]
 
-  spec.summary       = (Pathname(__dir__) / "README.md").each_line(chomp: true).
-                         lazy.grep_v(/\A\s*\z|\A\#/).first
-  spec.description   = spec.summary
+  readme_path = Pathname(__dir__) / "README.md"
+  if readme_path.exist? # cannot read on Dependabot
+    spec.summary = readme_path.each_line(chomp: true).
+                     lazy.grep_v(/\A\s*\z|\A\#/).first
+    spec.description = spec.summary
+  else
+    warn("No README.md, so cannot set gem summary and description.")
+  end
+
   spec.homepage      = "https://github.com/nishidayuya/" + spec.name
   spec.license       = "X11"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
