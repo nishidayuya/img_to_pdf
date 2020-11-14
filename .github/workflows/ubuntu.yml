@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - "*"
+  pull_request:
+    branches:
+      - "*"
   schedule:
     #        m h  md m wd
     - cron: "3 12 *  * *"
