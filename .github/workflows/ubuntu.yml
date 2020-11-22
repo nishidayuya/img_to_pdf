@@ -36,7 +36,7 @@ jobs:
         run: |
           bundle exec rake TESTOPTS=--verbose
       - name: Upload coverage report to Code Climate
-        uses: aktions/codeclimate-test-reporter@v1
+        uses: nishidayuya/codeclimate-test-reporter@v1.2.0-alpha.1
         with:
           codeclimate-test-reporter-id: ${{ secrets.CODE_CLIMATE_TEST_REPORTER_ID }}
           command: after-build --coverage-input-type lcov
