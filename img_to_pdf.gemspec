@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   summary_text = ""
   readme_path = Pathname(__dir__) / "README.md"
   if readme_path.exist?
-    summary_text = readme_path.each_line(chomp: true).
+    summary_text = IO.foreach(readme_path, chomp: true).
                      lazy.grep_v(/\A\s*\z|\A\#/).first
   else # on Dependabot
     warn("No README.md, so cannot set gem summary and description.")
