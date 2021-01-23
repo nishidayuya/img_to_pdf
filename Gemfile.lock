@@ -15,7 +15,7 @@ GEM
     parser (3.0.0.0)
       ast (~> 2.4.1)
     pdf-core (0.8.1)
-    power_assert (1.2.0)
+    power_assert (2.0.0)
     prawn (2.3.0)
       pdf-core (~> 0.8.1)
       ttfunk (~> 1.6)
