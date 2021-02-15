@@ -39,6 +39,11 @@ jobs:
         uses: paambaati/codeclimate-action@v2.7.5
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_TEST_REPORTER_ID }}
+        with:
+          #debug: true
+          coverageLocations: |
+            ${{github.workspace}}/coverage/lcov.info:lcov
+        if: ${{ github.event_name != 'pull_request' }}
       - uses: actions/upload-artifact@v2
         with:
           name: coverage_report
