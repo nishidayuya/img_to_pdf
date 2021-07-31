@@ -18,20 +18,20 @@ class ImgToPdf::DimensionTest < TestCase
 
   sub_test_case("#direction") do
     data(
-      "return :landscape if width is longer than height" => {
-        returns: :landscape,
-        value: {width: 2, height: 1},
-      },
-      "return :portrait if height is longer than width" => {
-        returns: :portrait,
-        value: {width: 1, height: 2},
-      },
-      "return :portrait if width == height" => {
-        returns: :portrait,
-        value: {width: 1, height: 1},
-      },
+      "return :landscape if width is longer than height" => [
+        :landscape,
+        {width: 2, height: 1},
+      ],
+      "return :portrait if height is longer than width" => [
+        :portrait,
+        {width: 1, height: 2},
+      ],
+      "return :portrait if width == height" => [
+        :portrait,
+        {width: 1, height: 1},
+      ],
     )
-    test("") do |returns:, value:|
+    test("") do |(returns, value)|
       assert_equal(returns, ImgToPdf::Dimension.new(**value).direction)
     end
   end
@@ -47,31 +47,31 @@ class ImgToPdf::DimensionTest < TestCase
 
   sub_test_case("#justify_direction") do
     data(
-      landscape: {
-        value: {width: 2, height: 1},
-        direction: :portrait,
-      },
-      portrait: {
-        value: {width: 1, height: 2},
-        direction: :landscape,
-      },
+      landscape: [
+        {width: 2, height: 1},
+        :portrait,
+      ],
+      portrait: [
+        {width: 1, height: 2},
+        :landscape,
+      ],
     )
-    test("return transposed it if different direction") do |value:, direction:|
+    test("return transposed it if different direction") do |(value, direction)|
       d = ImgToPdf::Dimension.new(**value)
       assert_equal(d.transpose, d.justify_direction(direction))
     end
 
     data(
-      landscape: {
-        value: {width: 2, height: 1},
-        direction: :landscape,
-      },
-      portrait: {
-        value: {width: 1, height: 2},
-        direction: :portrait,
-      },
+      landscape: [
+        {width: 2, height: 1},
+        :landscape,
+      ],
+      portrait: [
+        {width: 1, height: 2},
+        :portrait,
+      ],
     )
-    test("return dupped it if same direction") do |value:, direction:|
+    test("return dupped it if same direction") do |(value, direction)|
       d = ImgToPdf::Dimension.new(**value)
       result = d.justify_direction(direction)
       assert_equal(d, result)

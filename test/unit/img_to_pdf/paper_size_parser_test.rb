@@ -8,13 +8,13 @@ class ImgToPdf::PaperSizeParserTest < TestCase
       "a4-landscape" => PDF::Core::PageGeometry::SIZES["A4"].reverse,
       "b3-portrait" => PDF::Core::PageGeometry::SIZES["B3"],
     }.each.with_object({}) do |(paper_size_text, expected_size_ary), h|
-      h[paper_size_text] = {
-        paper_size_text: paper_size_text,
-        expected: ImgToPdf::Dimension.from_array(expected_size_ary),
-      }
+      h[paper_size_text] = [
+        paper_size_text,
+        ImgToPdf::Dimension.from_array(expected_size_ary),
+      ]
     end
   }
-  test("parsable") do |paper_size_text:, expected:|
+  test("parsable") do |(paper_size_text, expected)|
     assert_equal(expected, ImgToPdf::PaperSizeParser.(paper_size_text))
   end
 

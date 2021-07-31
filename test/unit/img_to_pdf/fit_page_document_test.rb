@@ -25,17 +25,17 @@ class ImgToPdf::FitPageDocumentTest < TestCase
           {n_horizontal_pages: 3, n_vertical_pages: 4},
         ],
       ].each.with_object({}) do |(expected_filename, page_size_text, args), h|
-        h[expected_filename] = {
-          args: args.merge(
+        h[expected_filename] = [
+          args.merge(
             page_dimension_pt: ImgToPdf::PaperSizeParser.(page_size_text),
             margin_pt: margin_pt,
             image: image,
           ),
-          expected_path: TEST_ASSETS_PATH / expected_filename,
-        }
+          TEST_ASSETS_PATH / expected_filename,
+        ]
       end
     }
-    test("render PDF file") do |args:, expected_path:|
+    test("render PDF file") do |(args, expected_path)|
       ImgToPdf::FitPageDocument.create(**args).render_file(@output_path)
       assert_pdf_content(expected_path, @output_path)
     end
