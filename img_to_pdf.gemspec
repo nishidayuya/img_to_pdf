@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   summary_text = ""
   readme_path = Pathname(__dir__) / "README.md"
   if readme_path.exist?
-    summary_text = IO.foreach(readme_path, chomp: true).
+    summary_text = File.foreach(readme_path, chomp: true).
                      lazy.grep_v(/\A\s*\z|\A\#/).first
   else # on Dependabot
     warn("No README.md, so cannot set gem summary and description.")
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.homepage      = "https://github.com/nishidayuya/#{spec.name}"
   spec.license       = "X11"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.5.0")
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
@@ -44,4 +44,5 @@ Gem::Specification.new do |spec|
   # https://github.com/codeclimate/test-reporter/issues/418
   spec.add_development_dependency "simplecov-lcov"
   spec.add_development_dependency "test-unit"
+  spec.metadata["rubygems_mfa_required"] = "true"
 end
