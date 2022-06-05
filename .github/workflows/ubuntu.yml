@@ -54,7 +54,7 @@ jobs:
           coverageLocations: |
             ${{github.workspace}}/coverage/lcov.info:lcov
         if: ${{ github.event_name != 'pull_request' }}
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: coverage_report
           path: coverage/
