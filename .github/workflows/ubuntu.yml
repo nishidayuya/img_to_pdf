@@ -46,7 +46,7 @@ jobs:
         run: |
           bundle exec rake TESTOPTS=--verbose
       - name: Upload coverage report to Code Climate
-        uses: paambaati/codeclimate-action@v3.0.0
+        uses: paambaati/codeclimate-action@v3.1.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_TEST_REPORTER_ID }}
         with:
